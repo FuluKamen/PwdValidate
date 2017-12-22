@@ -23,6 +23,20 @@ export default class PwdValidate extends Component{
       });
     }
   }
+  // handleChange = (e,callback) => {
+  //   const value = e.target.value.trim();
+  //   this.setState({ value });
+  //   if (callback) {
+  //     callback( e.target.value.trim())
+  //   }
+  //   this.triggerChange(value);
+  // }
+  // triggerChange = (changedValue) => {
+  //   const onChange = this.props.onChange;
+  //   if (onChange) {
+  //     onChange(changedValue);
+  //   }
+  // }
   handlePwdOnblur = (e,callback) => {
      this.handleOnblur(e,callback,'pwd')
   }
@@ -52,7 +66,7 @@ export default class PwdValidate extends Component{
      this.handleChange(e,callback,'pwd');
   }
   handleConfirmChange = (e,callback)=>{
-     if(!e.target.value || e.target.value!==this.state.pwd){
+     if(e.target.value.trim()!==this.state.pwd.trim()){
        this.setState({
           errconfirmmsg:this.props.errconfirmmsg ? this.props.errconfirmmsg : '两次输入密码不一致！'
        })
@@ -66,7 +80,7 @@ export default class PwdValidate extends Component{
   }
   handleChange = (e,callback,parameter) => {
     const { validType } = this.props
-    const value = e.target.value;
+    const value = e.target.value.trim();
     if(parameter==='pwd'){
       this.setState({ pwd:value });
     }else{
@@ -107,7 +121,6 @@ export default class PwdValidate extends Component{
   render() {
     const { placeholder,format } = this.props;
     const { value,pwd,pwdConfirm } = this.state
-    console.log('format',format,format==='1')
     return (
        <div className='pwdValidate'>
         { format==='1'?
