@@ -12,3 +12,4 @@ import PwdValidate from '../../Commpent/js/PwdValidate'
   }
 
 <PwdValidate format='1' onPwdChange={this.onPwdChange} onConfirmChange={this.onConfirmChange}/>
+# -
